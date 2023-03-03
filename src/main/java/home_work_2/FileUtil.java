@@ -1,6 +1,9 @@
 package home_work_2;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Watchable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +40,22 @@ public class FileUtil {
         }
         return listOfLines;
     }
+
+    public List<String> returnListOfWordsStatingFromVowel(String source) throws IOException {
+        List<String> result = new ArrayList<>();
+        List<String> listOfWords;
+        String str = Files.readString(Path.of(source));
+        listOfWords = List.of(str.toLowerCase().split("(\\W+)"));
+        for (String word : listOfWords) {
+            char ch = word.charAt(0);
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'u' || ch == 'o' || ch == 'y') {
+                result.add(word);
+            }
+        }
+        return result;
+    }
+
+
 
 
 
