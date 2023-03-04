@@ -82,7 +82,7 @@ public class FileUtil {
     }
 
     public Map<Character, Integer> getLetterFrequency(String source) {
-        Map<Character, Integer> words = new HashMap<>();
+        Map<Character, Integer> symbolsMap = new HashMap<>();
         StringBuilder stringBuilder = new StringBuilder();
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(source))) {
             String line = null;
@@ -97,12 +97,36 @@ public class FileUtil {
         for (char i = 'a'; i <= 'z'; i++) {
             for (char ch : symbols) {
                 if (i == ch) {
-                    words.put(i, ++counter);
+                    symbolsMap.put(i, ++counter);
                 }
             }
             counter = 0;
         }
-        return words;
+        return symbolsMap;
+    }
+
+    public Map<String, Integer> sortTextByWords(String source) {
+        Map<String, Integer> wordsMap = new HashMap<>();
+        StringBuilder stringBuilder = new StringBuilder();
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(source))) {
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                stringBuilder.append(line).append(" ");
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        String[] words = String.valueOf(stringBuilder).split("(\\W+)");
+        int count = 0;
+        for (String word : words) {
+            for (String word2 : words) {
+                if (word.equals(word2)) {
+                    wordsMap.put(word, ++count);
+                }
+            }
+            count = 0;
+        }
+        return wordsMap;
     }
 
     public void sortingAFile(String source) {
@@ -128,5 +152,23 @@ public class FileUtil {
         }
     }
 
-
+    public Map<String, Integer> getStudentsPerformance(String source) {
+        Map<String, Integer> studentPerformance = new TreeMap<>();
+        StringBuilder stringBuilder = new StringBuilder();
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(source))) {
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                stringBuilder.append(line).append(" ");
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        String[] studentsAndRating = String.valueOf(stringBuilder).split(",");
+        String[] student;
+        for (String str : studentsAndRating) {
+            student = str.trim().split(" ");
+            studentPerformance.put(student[0], Integer.parseInt(student[1]));
+        }
+        return studentPerformance;
+    }
 }
