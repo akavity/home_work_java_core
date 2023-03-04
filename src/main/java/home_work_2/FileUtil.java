@@ -10,7 +10,7 @@ public class FileUtil {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(source))) {
             String line = null;
             while ((line = bufferedReader.readLine()) != null) {
-                textInUpperCase.append(line.toUpperCase());
+                textInUpperCase.append(line).append(" ");
             }
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
@@ -18,7 +18,7 @@ public class FileUtil {
             throw new RuntimeException(e);
         }
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(target))) {
-            bufferedWriter.write(String.valueOf(textInUpperCase));
+            bufferedWriter.write(String.valueOf(textInUpperCase).toUpperCase());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -43,7 +43,7 @@ public class FileUtil {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(source))) {
             String line = null;
             while ((line = bufferedReader.readLine()) != null) {
-                stringBuilder.append(line);
+                stringBuilder.append(line).append(" ");
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -67,7 +67,7 @@ public class FileUtil {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(source))) {
             String line = null;
             while ((line = bufferedReader.readLine()) != null) {
-                stringBuilder.append(line);
+                stringBuilder.append(line).append(" ");
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -84,15 +84,16 @@ public class FileUtil {
 
     public Map<Character, Integer> getLetterFrequency(String source) {
         Map<Character, Integer> words = new HashMap<>();
-//        StringBuilder stringBuilder = new StringBuilder();
-        List<Character> symbols = new ArrayList<>();
-
+       StringBuilder stringBuilder = new StringBuilder();
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(source))) {
-            int symbol;
-            while ((symbol = bufferedReader.read()) != -1) {
-                symbols.add((char) symbol);
+            String line = null;
+            while ((line = bufferedReader.readLine()) != null) {
+                stringBuilder.append(line).append(" ");
             }
-
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        char[] symbols = String.valueOf(stringBuilder).toCharArray();
             //  String[] letters = String.valueOf(stringBuilder).toLowerCase().split("");
             //  int counter = 0;
 //            char symbol2 = 'a';
@@ -107,43 +108,43 @@ public class FileUtil {
 //            }
             int counter = 0;
             for (char i = 'a'; i <= 'z'; i++) {
-                for (Character ch : symbols) {
+                for (char ch : symbols) {
                     if (i == ch) {
                         words.put(i, ++counter);
                     }
                 }
                 counter = 0;
             }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
         return words;
     }
 
 
-    public void sortingAFile(String source) {
-        List<Integer> numbers = new ArrayList<>();
+    public void sortingAFile(String source, String target) {
+        List<Integer> sortNumbers = new ArrayList<>();
         StringBuilder stringBuilder = new StringBuilder();
 
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(source))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                stringBuilder.append(line);
+                stringBuilder.append(line).append(" ");
             }
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        String[] strings = stringBuilder.toString().split("(\\W+)");
-//        Arrays.sort(integers);
+        String[] strings = String.valueOf(stringBuilder).split("(\\W+)");
+        int[] numbers = new int[strings.length];
 
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(source + "sort"))) {
-//            bufferedWriter.write(A);
+        for (int i = 0; i < strings.length; i++) {
+            numbers[i] = Integer.parseInt(strings[i]);
+        }
+        Arrays.sort(numbers);
+
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(target))) {
+         bufferedWriter.write(Arrays.toString(numbers));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
-
 }
