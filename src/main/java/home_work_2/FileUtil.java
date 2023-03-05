@@ -134,6 +134,10 @@ public class FileUtil {
         return studentsAverageMarks;
     }
 
+    public void changeModifier(String source, String oldModifier, String newModifier) {
+
+    }
+
     public StringBuilder readLines(String source, String regex) {
         StringBuilder stringBuilder = new StringBuilder();
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(source))) {
@@ -146,6 +150,4 @@ public class FileUtil {
         }
         return stringBuilder;
     }
-
-
 }
