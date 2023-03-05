@@ -98,7 +98,7 @@ public class FileUtil {
             }
             count = 0;
         }
-        CustomComparator2 comparator = new CustomComparator2(wordsMap);
+        CustomComparator comparator = new CustomComparator(wordsMap);
         Map<String, Integer> sortMap = new TreeMap<>(comparator);
         sortMap.putAll(wordsMap);
         return sortMap;
