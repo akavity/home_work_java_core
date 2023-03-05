@@ -66,9 +66,7 @@ public class FileUtil {
             throw new RuntimeException(e);
         }
         String[] lines = String.valueOf(stringBuilder).split("\n");
-
         return result;
-
     }
 
     public Map<Character, Integer> getLetterFrequency(String source) {
