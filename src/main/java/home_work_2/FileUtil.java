@@ -53,21 +53,6 @@ public class FileUtil {
         return result;
     }
 
-    public List<String> getListOfTheLargestCombinationOfNumbers(String source) {
-        List<String> result = new ArrayList<>();
-
-        StringBuilder stringBuilder = new StringBuilder();
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(source))) {
-            String line = null;
-            while ((line = bufferedReader.readLine()) != null) {
-                stringBuilder.append(line).append("\n");
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        String[] lines = String.valueOf(stringBuilder).split("\n");
-        return result;
-    }
 
     public Map<Character, Integer> getLetterFrequency(String source) {
         Map<Character, Integer> symbolsMap = new HashMap<>();
@@ -112,8 +97,12 @@ public class FileUtil {
             numbers[i] = Integer.parseInt(strings[i]);
         }
         Arrays.sort(numbers);
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < strings.length; i++) {
+            result.append(numbers[i]).append(" ");
+        }
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(source + "_"))) {
-            bufferedWriter.write(Arrays.toString(numbers));
+            bufferedWriter.write(String.valueOf(result));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
