@@ -100,7 +100,10 @@ public class FileUtil {
             }
             count = 0;
         }
-        return wordsMap;
+        CustomComparator2 comparator = new CustomComparator2(wordsMap);
+        Map<String, Integer> sortMap = new TreeMap<>(comparator);
+        sortMap.putAll(wordsMap);
+        return sortMap;
     }
 
     public void sortingAFile(String source) {
