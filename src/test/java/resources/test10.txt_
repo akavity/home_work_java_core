@@ -1,0 +1,13 @@
+private class TextMonitoring {
+    private Map<String, Integer> researchText(String text) {
+        Map<String, Integer> mapWords = new LinkedHashMap<>();
+        String[] words = text.trim().split("(\\W+)");
+        for (String word : words) {
+            if (mapWords.containsKey(word)) {
+                mapWords.put(word, mapWords.get(word) + 1);
+            } else {
+                mapWords.put(word, 1);
+            }
+        }
+        return mapWords;
+    }
