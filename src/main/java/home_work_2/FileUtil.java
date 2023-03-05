@@ -117,19 +117,16 @@ public class FileUtil {
 
     public Map<String, Double> getStudentsAverageMarks(String source) {
         Map<String, Double> studentsAverageMarks = new HashMap<>();
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(source))) {
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                String[] studentsAndMarks = line.split("(\\W+)");
-                double averageMark = 0.0;
-                for (int i = 1; i < studentsAndMarks.length; i++) {
-                    averageMark += Integer.parseInt(studentsAndMarks[i]);
-                }
-                averageMark /= (studentsAndMarks.length - 1);
-                studentsAverageMarks.put(studentsAndMarks[0], averageMark);
+        StringBuilder stringBuilder = readLines(source, "\n");
+        String[] studentsAndMarks = String.valueOf(stringBuilder).split("\n");
+        for (String studentsAndMark : studentsAndMarks) {
+            double averageMark = 0.0;
+            String[] student = String.valueOf(studentsAndMark).split("(\\W+)");
+            for (int j = 1; j < student.length; j++) {
+                averageMark += Integer.parseInt(student[j]);
             }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            averageMark /= (student.length - 1);
+            studentsAverageMarks.put(student[0], averageMark);
         }
         return studentsAverageMarks;
     }
@@ -138,7 +135,7 @@ public class FileUtil {
         StringBuilder stringBuilder = readLines(source, " ");
         String[] lines = String.valueOf(stringBuilder).split("\n");
         for (int i = 0; i < lines.length; i++) {
-            lines[i]  = lines[i].replace(oldModifier, newModifier);
+            lines[i] = lines[i].replace(oldModifier, newModifier);
         }
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(source + "_"))) {
             for (String st : lines) {
@@ -148,15 +145,14 @@ public class FileUtil {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 
-    public StringBuilder readLines(String source, String regex) {
+    public StringBuilder readLines(String source, String separator) {
         StringBuilder stringBuilder = new StringBuilder();
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(source))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                stringBuilder.append(line).append(regex);
+                stringBuilder.append(line).append(separator);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
