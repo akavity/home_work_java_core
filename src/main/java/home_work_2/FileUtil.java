@@ -135,6 +135,19 @@ public class FileUtil {
     }
 
     public void changeModifier(String source, String oldModifier, String newModifier) {
+        StringBuilder stringBuilder = readLines(source, " ");
+        String[] lines = String.valueOf(stringBuilder).split("\n");
+        for (int i = 0; i < lines.length; i++) {
+            lines[i]  = lines[i].replace(oldModifier, newModifier);
+        }
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(source + "_"))) {
+            for (String st : lines) {
+                bufferedWriter.write(st);
+                bufferedWriter.write("\n");
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
