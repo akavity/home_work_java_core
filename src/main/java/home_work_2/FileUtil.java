@@ -53,20 +53,23 @@ public class FileUtil {
         return result;
     }
 
-//    public List<String> getListOfTheLargestCombinationOfNumbers(String source) {
-//        List<String> result = new ArrayList<>();
-//
-//        StringBuilder stringBuilder = new StringBuilder();
-//        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(source))) {
-//            String line = null;
-//            while((line = bufferedReader.readLine()) != null) {
-//                String[] lineNumbers = line.split("(\\W+)");
-//
-//            }
-//        }
-//
-//
-//    }
+    public List<String> getListOfTheLargestCombinationOfNumbers(String source) {
+        List<String> result = new ArrayList<>();
+
+        StringBuilder stringBuilder = new StringBuilder();
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(source))) {
+            String line = null;
+            while ((line = bufferedReader.readLine()) != null) {
+                stringBuilder.append(line).append("\n");
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        String[] lines = String.valueOf(stringBuilder).split("\n");
+
+        return result;
+
+    }
 
     public Map<Character, Integer> getLetterFrequency(String source) {
         Map<Character, Integer> symbolsMap = new HashMap<>();
@@ -132,7 +135,7 @@ public class FileUtil {
     }
 
     public void changeModifier(String source, String oldModifier, String newModifier) {
-        StringBuilder stringBuilder = readLines(source, " ");
+        StringBuilder stringBuilder = readLines(source, "\n");
         String[] lines = String.valueOf(stringBuilder).split("\n");
         for (int i = 0; i < lines.length; i++) {
             lines[i] = lines[i].replace(oldModifier, newModifier);
