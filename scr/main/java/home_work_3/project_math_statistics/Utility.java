@@ -1,4 +1,4 @@
-package home_work_3.ProjectMathStatistics;
+package home_work_3.project_math_statistics;
 
 import java.util.ArrayList;
 import java.util.List;
