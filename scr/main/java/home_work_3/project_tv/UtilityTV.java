@@ -3,36 +3,46 @@ package home_work_3.project_tv;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class UtilityTV {
-    public void printDiagonalTV(List<TV> list, int diagonal) {
-        list.stream()
+    public List<TV> getDiagonalTV(List<TV> list, int diagonal) {
+        return list.stream()
                 .filter(n -> n.getDiagonal() == diagonal)
-                .forEach(System.out::println);
+                .collect(Collectors.toList());
     }
 
-    public void printManufacturerTV(List<TV> list, String manufacturer) {
-        list.stream()
+    public List<TV> getManufacturerTV(List<TV> list, String manufacturer) {
+        return list.stream()
                 .filter(n -> Objects.equals(n.getManufacturer(), manufacturer))
-                .forEach(System.out::println);
+                .collect(Collectors.toList());
     }
 
-    public void printNewTV(List<TV> list, int releaseYear) {
-        list.stream()
+    public List<TV> getNewTV(List<TV> list, int releaseYear) {
+        return list.stream()
                 .filter(n -> n.getReleaseYear() > releaseYear)
-                .forEach(System.out::println);
+                .collect(Collectors.toList());
     }
 
-    public void printPriceRange(List<TV> list, int minPrice, int maxPrice) {
-        list.stream()
+    public List<TV> printPriceRange(List<TV> list, int minPrice, int maxPrice) {
+        return list.stream()
                 .filter(n -> (n.getPrice() >= minPrice && n.getPrice() <= maxPrice))
-                .forEach(System.out::println);
+                .collect(Collectors.toList());
     }
 
-    public void printTVSortedByPriceAscending(List<TV> list) {
-        list.stream()
-                .sorted(Comparator.comparing(TV::getPrice))
-                .forEach(System.out::println);
+    public List<TV> printTVSortedByPrice(List<TV> list, boolean rise) {
+        List<TV> result;
+        if (rise) {
+            result = list.stream()
+                    .sorted(Comparator.comparing(TV::getPrice))
+                    .collect(Collectors.toList());
+        } else {
+            result = list.stream()
+                    .sorted(Comparator.comparing(TV::getPrice).reversed())
+                    .collect(Collectors.toList());
+
+        }
+        return result;
     }
 
     public void printTVSortedByPriceDescending(List<TV> list) {
