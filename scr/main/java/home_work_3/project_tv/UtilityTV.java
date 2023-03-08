@@ -47,7 +47,7 @@ public class UtilityTV {
                 .forEach(System.out::println);
     }
 
-    public void printTVSortedByDiagonaDescending(List<TV> list) {
+    public void printTVSortedByDiagonalDescending(List<TV> list) {
         list.stream()
                 .sorted(Comparator.comparing(TV::getDiagonal).reversed())
                 .forEach(System.out::println);
