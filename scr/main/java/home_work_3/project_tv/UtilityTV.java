@@ -24,13 +24,13 @@ public class UtilityTV {
                 .collect(Collectors.toList());
     }
 
-    public List<TV> printPriceRange(List<TV> list, int minPrice, int maxPrice) {
+    public List<TV> getPriceRange(List<TV> list, int minPrice, int maxPrice) {
         return list.stream()
                 .filter(n -> (n.getPrice() >= minPrice && n.getPrice() <= maxPrice))
                 .collect(Collectors.toList());
     }
 
-    public List<TV> printTVSortedByPrice(List<TV> list, boolean rise) {
+    public List<TV> getTVSortedByPrice(List<TV> list, boolean rise) {
         List<TV> result;
         if (rise) {
             result = list.stream()
@@ -45,21 +45,17 @@ public class UtilityTV {
         return result;
     }
 
-    public void printTVSortedByPriceDescending(List<TV> list) {
-        list.stream()
-                .sorted(Comparator.comparing(TV::getPrice).reversed())
-                .forEach(System.out::println);
-    }
-
-    public void printTVSortedByDiagonalAscending(List<TV> list) {
-        list.stream()
-                .sorted(Comparator.comparing(TV::getDiagonal))
-                .forEach(System.out::println);
-    }
-
-    public void printTVSortedByDiagonalDescending(List<TV> list) {
-        list.stream()
-                .sorted(Comparator.comparing(TV::getDiagonal).reversed())
-                .forEach(System.out::println);
+    public List<TV> getTVSortedByDiagonal(List<TV> list, boolean rise) {
+        List<TV> result;
+        if (rise) {
+            result = list.stream()
+                    .sorted(Comparator.comparing(TV::getDiagonal))
+                    .collect(Collectors.toList());
+        } else {
+            result = list.stream()
+                    .sorted(Comparator.comparing(TV::getDiagonal).reversed())
+                    .collect(Collectors.toList());
+        }
+        return result;
     }
 }
