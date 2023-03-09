@@ -20,7 +20,7 @@ public class UtilityTV {
 
     public List<TV> getNewTV(List<TV> list, int releaseYear) {
         return list.stream()
-                .filter(n -> n.getReleaseYear() > releaseYear)
+                .filter(n -> n.getReleaseYear() >= releaseYear)
                 .collect(Collectors.toList());
     }
 
@@ -57,5 +57,12 @@ public class UtilityTV {
                     .collect(Collectors.toList());
         }
         return result;
+    }
+
+    public void print(List<TV> list) {
+        for (TV tv : list) {
+            System.out.printf("Manufacture: %s, Model: %s, Release: %s, Diagonal: %s, Price: %s\n",
+                    tv.getManufacturer(), tv.getModel(), tv.getReleaseYear(), tv.getDiagonal(), tv.getPrice());
+        }
     }
 }
