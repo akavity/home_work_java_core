@@ -3,7 +3,7 @@ package home_work_3.project_math_statistics;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MathStatisticsDemo {
+public class   MathStatisticsDemo {
     public static void main(String[] args) {
         Utility test = new Utility();
         List<Integer> list = new ArrayList<>(test.getListRandomNumbers(20, 100));
