@@ -40,7 +40,7 @@ public class DemoTV {
         System.out.println("400 - 800 $");
         onliner.print(onliner.getPriceRange(testTV, 400, 800));
         System.out.println("\ngetting TVs sorted by price.\n");
-        onliner.print(onliner.getTVSortedByPrice(testTV, true));
+        onliner.print(onliner.getTVSortedByPrice(testTV, false));
         System.out.println("\nsorted diagonally.\n");
         onliner.print(onliner.getTVSortedByDiagonal(testTV, false));
     }
