@@ -1,4 +1,5 @@
 package home_work_3;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,7 +9,6 @@ import java.util.*;
 public class Task01Test {
     private Map<String, String> mapTest;
     private List<String> listTest;
-
     private List<String> listFromMap;
 
     @BeforeEach
@@ -20,27 +20,30 @@ public class Task01Test {
 
     @Test
     public void getMapFromArrayTest1() {
-       mapTest = Task01.getMapFromArray(listTest);
+        mapTest = Task01.getMapFromArray(listTest);
 
-        Assertions.assertEquals("in.txt", mapTest.get("-i"));
+        Assertions.assertEquals("in.txt", mapTest.get("-i" ));
     }
+
     @Test
     public void getMapFromArrayTest2() {
         mapTest = Task01.getMapFromArray(listTest);
 
-        Assertions.assertEquals("40", mapTest.get("--limit"));
+        Assertions.assertEquals("40", mapTest.get("--limit" ));
     }
+
     @Test
     public void getMapFromArrayTest3() {
         mapTest = Task01.getMapFromArray(listTest);
 
-        Assertions.assertEquals("1", mapTest.get("-d"));
+        Assertions.assertEquals("1", mapTest.get("-d" ));
     }
+
     @Test
     public void getMapFromArrayTest4() {
         mapTest = Task01.getMapFromArray(listTest);
 
-        Assertions.assertEquals("out.txt", mapTest.get("-o"));
+        Assertions.assertEquals("out.txt", mapTest.get("-o" ));
     }
 
     @Test
@@ -49,7 +52,7 @@ public class Task01Test {
 
         listFromMap = Task01.getArrayFromMap(mapTest);
 
-        Assertions.assertTrue(listFromMap.contains("out.txt"));
+        Assertions.assertTrue(listFromMap.contains("out.txt" ));
     }
 
     @Test
@@ -58,7 +61,7 @@ public class Task01Test {
 
         listFromMap = Task01.getArrayFromMap(mapTest);
 
-        Assertions.assertTrue(listFromMap.contains("-o"));
+        Assertions.assertTrue(listFromMap.contains("-o" ));
     }
 
     @Test
@@ -67,7 +70,7 @@ public class Task01Test {
 
         listFromMap = Task01.getArrayFromMap(mapTest);
 
-        Assertions.assertTrue(listFromMap.contains("1"));
+        Assertions.assertTrue(listFromMap.contains("1" ));
     }
 
     @Test
@@ -76,7 +79,7 @@ public class Task01Test {
 
         listFromMap = Task01.getArrayFromMap(mapTest);
 
-        Assertions.assertTrue(listFromMap.contains("-d"));
+        Assertions.assertTrue(listFromMap.contains("-d" ));
     }
 
     @Test
@@ -85,7 +88,7 @@ public class Task01Test {
 
         listFromMap = Task01.getArrayFromMap(mapTest);
 
-        Assertions.assertTrue(listFromMap.contains("--limit"));
+        Assertions.assertTrue(listFromMap.contains("--limit" ));
     }
 
     @Test
@@ -94,7 +97,7 @@ public class Task01Test {
 
         listFromMap = Task01.getArrayFromMap(mapTest);
 
-        Assertions.assertTrue(listFromMap.contains("40"));
+        Assertions.assertTrue(listFromMap.contains("40" ));
     }
 
     @Test
@@ -103,14 +106,15 @@ public class Task01Test {
 
         listFromMap = Task01.getArrayFromMap(mapTest);
 
-        Assertions.assertTrue(listFromMap.contains("in.txt"));
+        Assertions.assertTrue(listFromMap.contains("in.txt" ));
     }
+
     @Test
     public void getArrayFromMapTest8() {
         mapTest = Task01.getMapFromArray(listTest);
 
         listFromMap = Task01.getArrayFromMap(mapTest);
 
-        Assertions.assertTrue(listFromMap.contains("-i"));
+        Assertions.assertTrue(listFromMap.contains("-i" ));
     }
 }
