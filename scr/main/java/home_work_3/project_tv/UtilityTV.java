@@ -40,7 +40,6 @@ public class UtilityTV {
             result = list.stream()
                     .sorted(Comparator.comparing(TV::getPrice).reversed())
                     .collect(Collectors.toList());
-
         }
         return result;
     }
