@@ -1,7 +1,11 @@
 package home_work_3;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Task02Demo {
     public static void main(String[] args) {
+        List<String> list = new ArrayList<>(List.of("-i", "in.txt", "--limit", "40", "-d", "1", "-o", "out.txt"));
         Task02 test = new Task02();
 
         Columns columns = test::getColumns;
