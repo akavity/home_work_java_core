@@ -14,16 +14,9 @@ public class Task02 {
         }
     }
 
-    public void getFiveColumns() {
+    public void getFiveColumns(int multiplicandFirst, int multiplicandLast) {
         for (int i = 1; i <= 10; i++) {
-            for(int j = 1; j <= 5; j++) {
-                System.out.printf("%d * %d = %d       \t", j, i, j * i);
-            }
-            System.out.println(" ");
-        }
-        System.out.println(" ");
-        for (int i = 1; i <= 10; i++) {
-            for(int j = 6; j <= 10; j++) {
+            for (int j = multiplicandFirst; j <= multiplicandLast; j++) {
                 System.out.printf("%d * %d = %d       \t", j, i, j * i);
             }
             System.out.println(" ");
