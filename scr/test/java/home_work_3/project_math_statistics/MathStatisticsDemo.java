@@ -12,27 +12,35 @@ public class   MathStatisticsDemo {
         System.out.println(list);
 
         System.out.print("Even numbers: ");
-        System.out.println(test.getAmountOfEvenNumbers(list));
+        CounterNumbers<Integer> counterOne = test::getAmountOfEvenNumbers;
+        System.out.println(counterOne.count(list));
 
         System.out.print("Odd numbers: ");
-        System.out.println(test.getAmountOfOddNumbers(list));
+        CounterNumbers<Integer> counterTwo = test::getAmountOfOddNumbers;
+        System.out.println(counterTwo.count(list));
 
         System.out.print("Equals zero: ");
-        System.out.println(test.getNumbersEqualsZero(list));
+        CounterNumbers<Integer> counterThree = test::getNumbersEqualsZero;
+        System.out.println(counterThree.count(list));
 
         System.out.print("Equals number 22: ");
-        System.out.println(test.getNumbersEqualsNumber(list, 22));
+        SpecificNumberCounter<Integer> counterFour = test::getNumbersEqualsNumber;
+        System.out.println(counterFour.count(list,22));
         System.out.print("Equals number 44: ");
-        System.out.println(test.getNumbersEqualsNumber(list, 44));
+        SpecificNumberCounter<Integer> counterFive = test::getNumbersEqualsNumber;
+        System.out.println(counterFive.count(list,22));
         System.out.print("Equals number 45: ");
-        System.out.println(test.getNumbersEqualsNumber(list, 45));
-        System.out.print("Equals number 46: ");
-        System.out.println(test.getNumbersEqualsNumber(list, 46));
-        System.out.print("Equals number 84: ");
-        System.out.println(test.getNumbersEqualsNumber(list, 84));
-        System.out.print("Equals number 75: ");
-        System.out.println(test.getNumbersEqualsNumber(list, 75));
-        System.out.print("Equals number 96: ");
-        System.out.println(test.getNumbersEqualsNumber(list, 96));
+        SpecificNumberCounter<Integer> counterSix = test::getNumbersEqualsNumber;
+        System.out.println(counterSix.count(list,45));
+
+    }
+    @FunctionalInterface
+    public interface CounterNumbers<T> {
+        long count(List<T> a);
+    }
+
+    @FunctionalInterface
+    public interface SpecificNumberCounter<T> {
+        long count(List<T> a, int number);
     }
 }
