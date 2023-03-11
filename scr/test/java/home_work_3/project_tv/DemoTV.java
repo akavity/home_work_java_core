@@ -21,27 +21,62 @@ public class DemoTV {
 
         System.out.println("getting TVs with a given diagonal.\n");
         System.out.println("TV with a diagonal 32\":");
-        onliner.print(onliner.getDiagonalTV(testTV, 32));
+        FilterDiagonalTV<TV> filterOne = onliner::getDiagonalTV;
+        onliner.print(filterOne.returnList(testTV, 32));
         System.out.println("TV with a diagonal 40\":");
-        onliner.print(onliner.getDiagonalTV(testTV, 40));
+        onliner.print(filterOne.returnList(testTV, 40));
+
         System.out.println("\ngetting TVs from a certain manufacturer.\n");
         System.out.println("POLAR:");
-        onliner.print(onliner.getManufacturerTV(testTV, "POLAR"));
+        FilterManufacturerTV<TV> filterTwo = onliner::getManufacturerTV;
+        onliner.print(filterTwo.returnList(testTV, "POLAR"));
         System.out.println("Horizont:");
-        onliner.print(onliner.getManufacturerTV(testTV, "Horizont"));
+        onliner.print(filterTwo.returnList(testTV, "Horizont"));
+
         System.out.println("\nreceiving TVs no older than a certain year.\n");
         System.out.println("2020");
-        onliner.print(onliner.getNewTV(testTV, 2020));
+        FilterReleaseYearTV<TV> filterTree = onliner::getNewTV;
+        onliner.print(filterTree.returnList(testTV, 2020));
         System.out.println("2022");
-        onliner.print(onliner.getNewTV(testTV, 2022));
+        onliner.print(filterTree.returnList(testTV, 2022));
+
         System.out.println("\ngetting TVs with a price in some range.\n");
         System.out.println("1000 - 2000 $");
-        onliner.print(onliner.getPriceRange(testTV, 1000, 2000));
+        FilterPriceTV<TV> filterFour = onliner::getPriceRange;
+        onliner.print(filterFour.returnList(testTV, 1000, 2000));
         System.out.println("400 - 800 $");
-        onliner.print(onliner.getPriceRange(testTV, 400, 800));
+        onliner.print(filterFour.returnList(testTV, 400, 800));
+
         System.out.println("\ngetting TVs sorted by price.\n");
-        onliner.print(onliner.getTVSortedByPrice(testTV, false));
+        SorterTV<TV> sorter = onliner::getTVSortedByPrice;
+        onliner.print(sorter.returnList(testTV, false));
         System.out.println("\nsorted diagonally.\n");
-        onliner.print(onliner.getTVSortedByDiagonal(testTV, false));
+        SorterTV<TV> sorterTwo = onliner::getTVSortedByDiagonal;
+        onliner.print(sorterTwo.returnList(testTV, false));
+    }
+
+    @FunctionalInterface
+    public interface FilterDiagonalTV<T> {
+        List<T> returnList(List<T> a, int b);
+    }
+
+    @FunctionalInterface
+    public interface FilterManufacturerTV<T> {
+        List<T> returnList(List<T> a, String manufacture);
+    }
+
+    @FunctionalInterface
+    public interface FilterReleaseYearTV<T> {
+        List<T> returnList(List<T> a, int releaseYear);
+    }
+
+    @FunctionalInterface
+    public interface FilterPriceTV<T> {
+        List<T> returnList(List<T> a, int minPrice, int maxPrice);
+    }
+
+    @FunctionalInterface
+    public interface SorterTV<T> {
+        List<T> returnList(List<T> a, boolean rising);
     }
 }
