@@ -21,15 +21,9 @@ public class CityUtility {
         return cities.stream().filter(n -> Objects.equals(n, city)).count();
     }
 
-    public void printUniqueCities(List<String> cities) {
-        cities.stream().distinct().forEach(System.out::println);
-    }
-
-    public void printCitiesWithNameLength(List<String> cities, int length) {
-        cities.stream().distinct().filter(n -> n.length() >= length).forEach(System.out::println);
-    }
-
-    public void printCitiesWithFirstChar(List<String> cities, char symbol) {
-        cities.stream().distinct().filter(n -> n.charAt(0) == symbol).forEach(System.out::println);
+    public void printList(List<String> list) {
+        for (String st : list) {
+            System.out.print(st + " ");
+        }
     }
 }
