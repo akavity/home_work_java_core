@@ -32,107 +32,92 @@ public class CalculatorWithCounterAutoChoiceAggregation {
 
     public double pow(double a, int b) {
         incrementCountOperation();
-        return calculatorOne.pow(a, b);
+        double result;
+        if (calculatorOne != null) {
+            result = calculatorOne.pow(a, b);
+        } else if (calculatorTwo != null) {
+            result = calculatorTwo.pow(a, b);
+        } else {
+            result = calculatorTree.pow(a, b);
+        }
+        return result;
     }
 
     public double module(double a) {
         incrementCountOperation();
-        return calculatorOne.module(a);
+        double result;
+        if (calculatorOne != null) {
+            result = calculatorOne.module(a);
+        } else if (calculatorTwo != null) {
+            result = calculatorTwo.module(a);
+        } else {
+            result = calculatorTree.module(a);
+        }
+        return result;
     }
 
     public double squareRoot(double a) {
         incrementCountOperation();
-        return calculatorOne.squareRoot(a);
+        double result;
+        if (calculatorOne != null) {
+            result = calculatorOne.squareRoot(a);
+        } else if (calculatorTwo != null) {
+            result = calculatorTwo.squareRoot(a);
+        } else {
+            result = calculatorTree.squareRoot(a);
+        }
+        return result;
     }
 
     public double plus(double a, double b) {
         incrementCountOperation();
-        return calculatorOne.plus(a, b);
+        double result;
+        if (calculatorOne != null) {
+            result = calculatorOne.plus(a, b);
+        } else if (calculatorTwo != null) {
+            result = calculatorTwo.plus(a, b);
+        } else {
+            result = calculatorTree.plus(a, b);
+        }
+        return result;
     }
 
     public double minus(double a, double b) {
         incrementCountOperation();
-        return calculatorOne.minus(a, b);
+        double result;
+        if (calculatorOne != null) {
+            result = calculatorOne.minus(a, b);
+        } else if (calculatorTwo != null) {
+            result = calculatorTwo.minus(a, b);
+        } else {
+            result = calculatorTree.minus(a, b);
+        }
+        return result;
     }
 
     public double mul(double a, double b) {
         incrementCountOperation();
-        return calculatorOne.mul(a, b);
+        double result;
+        if (calculatorOne != null) {
+            result = calculatorOne.mul(a, b);
+        } else if (calculatorTwo != null) {
+            result = calculatorTwo.mul(a, b);
+        } else {
+            result = calculatorTree.mul(a, b);
+        }
+        return result;
     }
 
     public double div(double a, double b) {
         incrementCountOperation();
-        return calculatorOne.div(a, b);
-    }
-
-    public double powTwo(double a, int b) {
-        incrementCountOperation();
-        return calculatorTwo.pow(a, b);
-    }
-
-    public double moduleTwo(double a) {
-        incrementCountOperation();
-        return calculatorTwo.module(a);
-    }
-
-    public double squareRootTwo(double a) {
-        incrementCountOperation();
-        return calculatorTwo.squareRoot(a);
-    }
-
-    public double plusTwo(double a, double b) {
-        incrementCountOperation();
-        return calculatorTwo.plus(a, b);
-    }
-
-    public double minusTwo(double a, double b) {
-        incrementCountOperation();
-        return calculatorTwo.minus(a, b);
-    }
-
-    public double mulTwo(double a, double b) {
-        incrementCountOperation();
-        return calculatorTwo.mul(a, b);
-    }
-
-    public double divTwo(double a, double b) {
-        incrementCountOperation();
-        return calculatorTwo.div(a, b);
-    }
-
-
-    public double powTree(double a, int b) {
-        incrementCountOperation();
-        return calculatorTree.pow(a, b);
-    }
-
-    public double moduleTree(double a) {
-        incrementCountOperation();
-        return calculatorTree.module(a);
-    }
-
-    public double squareRootTree(double a) {
-        incrementCountOperation();
-        return calculatorTree.squareRoot(a);
-    }
-
-    public double plusTree(double a, double b) {
-        incrementCountOperation();
-        return calculatorTree.plus(a, b);
-    }
-
-    public double minusTree(double a, double b) {
-        incrementCountOperation();
-        return calculatorTree.minus(a, b);
-    }
-
-    public double mulTree(double a, double b) {
-        incrementCountOperation();
-        return calculatorTree.mul(a, b);
-    }
-
-    public double divTree(double a, double b) {
-        incrementCountOperation();
-        return calculatorTree.div(a, b);
+        double result;
+        if (calculatorOne != null) {
+            result = calculatorOne.div(a, b);
+        } else if (calculatorTwo != null) {
+            result = calculatorTwo.div(a, b);
+        } else {
+            result = calculatorTree.div(a, b);
+        }
+        return result;
     }
 }

@@ -19,19 +19,19 @@ public class CalculatorWithCounterDelegateChoiceAggregationMain {
         System.out.println(calculatorOne.getCountOperation());
         System.out.println(result);
 
-        double div2 = calculatorTwo.divTwo(28.5, 5);
-        double pow2 = calculatorTwo.powTwo(div2, 2);
-        double mul2 = calculatorTwo.mulTwo(15, 7);
-        double plus2 = calculatorTwo.plusTwo(mul2, pow2);
-        double result2 = calculatorTwo.plusTwo(4.1, plus2);
+        double div2 = calculatorTwo.div(28.5, 5);
+        double pow2 = calculatorTwo.pow(div2, 2);
+        double mul2 = calculatorTwo.mul(15, 7);
+        double plus2 = calculatorTwo.plus(mul2, pow2);
+        double result2 = calculatorTwo.plus(4.1, plus2);
         System.out.println(calculatorTwo.getCountOperation());
         System.out.println(result2);
 
-        double div3 = calculatorThree.divTree(28.5, 5);
-        double pow3 = calculatorThree.powTree(div3, 2);
-        double mul3 = calculatorThree.mulTree(15, 7);
-        double plus3 = calculatorThree.plusTree(mul3, pow3);
-        double result3 = calculatorThree.plusTree(4.1, plus3);
+        double div3 = calculatorThree.div(28.5, 5);
+        double pow3 = calculatorThree.pow(div3, 2);
+        double mul3 = calculatorThree.mul(15, 7);
+        double plus3 = calculatorThree.plus(mul3, pow3);
+        double result3 = calculatorThree.plus(4.1, plus3);
         System.out.println(calculatorThree.getCountOperation());
         System.out.println(result3);
     }
